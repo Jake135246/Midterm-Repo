@@ -46,8 +46,8 @@
 #include "CAN.h"
 #include "src/Uart_helper.h"
 
+void labFinalReceive(void);
+void labFinal(void);
 void setupHardware(void);
-void receive(void);
-void transmit(void);
-void trial_recieve(void);
+void transmitAndReceive(void);
 void displayData(void);

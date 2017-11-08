@@ -58,15 +58,21 @@
 #define NUM_RX_MESSAGES 7
 #define NUM_TX_MESSAGES 7
 
+// place a 1 by each message you would like to receive
+
+#define MESSAGE1 1			
+#define MESSAGE2 1
+#define MESSAGE3 1 
+#define MESSAGE4 0
+#define MESSAGE5 1
+#define MESSAGE6 1
+#define MESSAGE7 0
+
+
 extern unsigned char MsgData[NUM_RX_MESSAGES][4];
 
 void initReceiver(void);
-void Steady_Receiver(void);
 void CAN_Transmit(uint8_t data[4], uint8_t msgSelect);
 void CANIntHandler(void);
 void CAN_Init(void);
-void CAN_Slave(void);
 void Init_Structs(void);
-void Init_Structs1(void);
-void Init_Structs2(void);
-void Init_Structs3(void);

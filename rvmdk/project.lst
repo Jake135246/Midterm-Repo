@@ -65385,20 +65385,25 @@ N
 N#define NUM_RX_MESSAGES 7
 N#define NUM_TX_MESSAGES 7
 N
+N// place a 1 by each message you would like to receive
+N
+N#define MESSAGE1 1			
+N#define MESSAGE2 1
+N#define MESSAGE3 1 
+N#define MESSAGE4 0
+N#define MESSAGE5 1
+N#define MESSAGE6 1
+N#define MESSAGE7 0
+N
+N
 Nextern unsigned char MsgData[NUM_RX_MESSAGES][4];
 Xextern unsigned char MsgData[7][4];
 N
 Nvoid initReceiver(void);
-Nvoid Steady_Receiver(void);
 Nvoid CAN_Transmit(uint8_t data[4], uint8_t msgSelect);
 Nvoid CANIntHandler(void);
 Nvoid CAN_Init(void);
-Nvoid CAN_Slave(void);
 Nvoid Init_Structs(void);
-Nvoid Init_Structs1(void);
-Nvoid Init_Structs2(void);
-W "CAN.h" 72 26 last line of file ends without a newline
-Nvoid Init_Structs3(void);
 L 47 "project.h" 2
 N#include "src/Uart_helper.h"
 L 1 "src/Uart_helper.h" 1
@@ -65424,10 +65429,10 @@ Nint fgetc(FILE *f);
 N
 L 48 "project.h" 2
 N
+Nvoid labFinalReceive(void);
+Nvoid labFinal(void);
 Nvoid setupHardware(void);
-Nvoid receive(void);
-Nvoid transmit(void);
-Nvoid trial_recieve(void);
+Nvoid transmitAndReceive(void);
 W "project.h" 53 24 last line of file ends without a newline
 Nvoid displayData(void);
 L 2 "project.c" 2
@@ -65449,74 +65454,104 @@ N
 N
 N
 Nint  main(void) {
-N	setupHardware();
-N
-N//  trial_recieve();	
 N	
-N	transmit();
+N	setupHardware();
+N	SysCtlDelay(SysCtlClockGet()/3);
+N	
+N	
+N//	labFinal();
+N	labFinalReceive();
+N 	//transmitAndReceive();
 N}	
 N
-N
-N
-N
-Nvoid trial_recieve(){
+Nvoid transmitAndReceive() {
 N	initReceiver();
-N	while(1){
-N		printf("Display data?");
-N		getchar();
-X		getc((& __stdin));
-N		printf("MsgData[0] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[0][0], MsgData[0][1], MsgData[0][2], MsgData[0][3]);
-N		printf("MsgData[1] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[1][0], MsgData[1][1], MsgData[1][2], MsgData[1][3]);
-N		printf("MsgData[2] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[2][0], MsgData[2][1], MsgData[2][2], MsgData[2][3]);
-N		printf("MsgData[3] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[3][0], MsgData[3][1], MsgData[3][2], MsgData[3][3]);	
-N		printf("MsgData[4] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[4][0], MsgData[4][1], MsgData[4][2], MsgData[4][3]);
-N		printf("MsgData[5] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[5][0], MsgData[5][1], MsgData[5][2], MsgData[5][3]);
-N		printf("MsgData[6] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[6][0], MsgData[6][1], MsgData[6][2], MsgData[6][3]);
-N	}
-N}
-N
-N
-N
-N
-N
-Nvoid transmit() {
 N	uint8_t data[4];
 N	uint8_t msgSelect;
 N	
-N	while(1){	
-N		printf("which message?\n");
+N	while(1) {
+N		
+N		printf("Enter 1-7 to send a message, or 0 to display data.\n");		
 N		msgSelect = getchar();
 X		msgSelect = getc((& __stdin));
 N		
-N		data[0] = 0;
-N		data[1] = 0;
-N		data[2] = 128; 
-N		data[3] = 128;		
+N	if(msgSelect==0){
+N		displayData();	
+N	}	
+N	if(1 <= msgSelect && 7 >= msgSelect ) {
+N	data[0] = 0;
+N	data[1] = 0;
+N	data[2] = 128; 
+N	data[3] = 128;		
 N		
-N		printf("sending message\n");
-N		CAN_Transmit(data, msgSelect);
-N
-N		printf("send again new data on same message?\n");
-N		getchar(); 
-X		getc((& __stdin)); 
-N
-N		data[0] = 0;
-N		data[1] = 128;
-N		data[2] = 0; 
-N		data[3] = 128;			
-N
-N		printf("sending message\n");
-N		CAN_Transmit(data, msgSelect);
-N	}
+N	printf("sending message\n");
+N	CAN_Transmit(data, msgSelect);
+N	
+N	data[0] = 0;
+N	data[1] = 128;
+N	data[2] = 0; 
+N	data[3] = 128;
+N		}
+N	}	
+N}
+Nvoid labFinalReceive(){
+N	initReceiver();
+N	while(1){
+N	if(MsgData[1][0] >= 128)
+N			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0xF);
+X			GPIOPinWrite(0x40025000, 0x00000002, 0xF);
+N		else 
+N			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0x0);
+X			GPIOPinWrite(0x40025000, 0x00000002, 0x0);
+N		if(MsgData[1][1] >= 128)
+N			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0xF);
+X			GPIOPinWrite(0x40025000, 0x00000004, 0xF);
+N		else 
+N			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_2, 0x0);
+X			GPIOPinWrite(0x40025000, 0x00000004, 0x0);
+N		if(MsgData[1][2] >= 128)
+N			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0xF);
+X			GPIOPinWrite(0x40025000, 0x00000008, 0xF);
+N		else 
+N			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_3, 0x0);		
+X			GPIOPinWrite(0x40025000, 0x00000008, 0x0);		
+N	}	
 N}
 N
+N
+Nvoid labFinal(){
+N	
+N	uint8_t data[4];
+N
+N	while(1){	
+W "project.c" 83 13 function "ADCReadChan" declared implicitly
+N		data[0] = ADCReadChan()/8; 
+W "project.c" 84 13 function "ADCReadChan2" declared implicitly
+N		data[1] = ADCReadChan2()/8;
+W "project.c" 85 13 function "ADCReadChan3" declared implicitly
+N		data[2] = ADCReadChan3()/8;	
+N		data[3] = 0;
+N		
+N		CAN_Transmit(data, 2);
+N		
+N		SysCtlDelay(SysCtlClockGet()/3);
+N		
+N		
+N	}	
+N}
+N
+N
+N
 Nvoid setupHardware(){
-W "project.c" 79 3 function "ClockSetup" declared implicitly
+W "project.c" 99 3 function "ClockSetup" declared implicitly
 N		ClockSetup();
-W "project.c" 80 3 function "GPIO_Setup" declared implicitly
+N		
+W "project.c" 101 3 function "GPIO_Setup" declared implicitly
 N		GPIO_Setup();
 N		UartSetup();
 N	  CAN_Init();
+W "project.c" 104 3 function "SetupADC" declared implicitly
+N		SetupADC();
 N		printf("Debugging interface initialized...\n");
 N		printf("GPIO ports initialized...\n");
 N		printf("Clock settings initialized...\n\n");
@@ -65525,6 +65560,20 @@ N}
 N
 N
 Nvoid displayData(){
-N
-W "project.c" 92 2 last line of file ends without a newline
+N		printf("MsgData[0] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[0][0], MsgData[0][1], MsgData[0][2], MsgData[0][3]);
+N		printf("MsgData[1] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[1][0], MsgData[1][1], MsgData[1][2], MsgData[1][3]);
+N		printf("MsgData[2] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[2][0], MsgData[2][1], MsgData[2][2], MsgData[2][3]);
+N		printf("MsgData[3] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[3][0], MsgData[3][1], MsgData[3][2], MsgData[3][3]);	
+N		printf("MsgData[4] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[4][0], MsgData[4][1], MsgData[4][2], MsgData[4][3]);
+N		printf("MsgData[5] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[5][0], MsgData[5][1], MsgData[5][2], MsgData[5][3]);
+N		printf("MsgData[6] received message 1:\tByte 1: %d\tByte 2: %d\tByte 3: %d\t Byte 4: %d\n", MsgData[6][0], MsgData[6][1], MsgData[6][2], MsgData[6][3]);
 N}
+N
+N
+N
+N	// Enable the PWM0 peripheral
+N
+N	
+N	// Check if the peripheral access is enabled.
+W "project.c" 128 2 last line of file ends without a newline
+N	

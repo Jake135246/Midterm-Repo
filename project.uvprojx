@@ -460,6 +460,16 @@
               <FileType>5</FileType>
               <FilePath>.\CAN.h</FilePath>
             </File>
+            <File>
+              <FileName>HAL_ADC.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\HAL_ADC.c</FilePath>
+            </File>
+            <File>
+              <FileName>HAL_ADC.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\HAL_ADC.h</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>

@@ -18497,18 +18497,18 @@ int fgetc(FILE *f);
 
 
 
+
+
+#line 70 "CAN.h"
+
+
 extern unsigned char MsgData[7][4];
 
 void initReceiver(void);
-void Steady_Receiver(void);
 void CAN_Transmit(uint8_t data[4], uint8_t msgSelect);
 void CANIntHandler(void);
 void CAN_Init(void);
-void CAN_Slave(void);
 void Init_Structs(void);
-void Init_Structs1(void);
-void Init_Structs2(void);
-void Init_Structs3(void);
 #line 47 "project.h"
 #line 1 "src/Uart_helper.h"
 #line 2 "src/Uart_helper.h"
@@ -18533,10 +18533,10 @@ int fgetc(FILE *f);
 
 #line 48 "project.h"
 
+void labFinalReceive(void);
+void labFinal(void);
 void setupHardware(void);
-void receive(void);
-void transmit(void);
-void trial_recieve(void);
+void transmitAndReceive(void);
 void displayData(void);
 #line 6 "Systic.h"
 #line 1 ".\\src\\Uart_helper.h"

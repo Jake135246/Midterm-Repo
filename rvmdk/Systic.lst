@@ -65391,20 +65391,25 @@ N
 N#define NUM_RX_MESSAGES 7
 N#define NUM_TX_MESSAGES 7
 N
+N// place a 1 by each message you would like to receive
+N
+N#define MESSAGE1 1			
+N#define MESSAGE2 1
+N#define MESSAGE3 1 
+N#define MESSAGE4 0
+N#define MESSAGE5 1
+N#define MESSAGE6 1
+N#define MESSAGE7 0
+N
+N
 Nextern unsigned char MsgData[NUM_RX_MESSAGES][4];
 Xextern unsigned char MsgData[7][4];
 N
 Nvoid initReceiver(void);
-Nvoid Steady_Receiver(void);
 Nvoid CAN_Transmit(uint8_t data[4], uint8_t msgSelect);
 Nvoid CANIntHandler(void);
 Nvoid CAN_Init(void);
-Nvoid CAN_Slave(void);
 Nvoid Init_Structs(void);
-Nvoid Init_Structs1(void);
-Nvoid Init_Structs2(void);
-W "CAN.h" 72 26 last line of file ends without a newline
-Nvoid Init_Structs3(void);
 L 47 "project.h" 2
 N#include "src/Uart_helper.h"
 L 1 "src/Uart_helper.h" 1
@@ -65430,10 +65435,10 @@ Nint fgetc(FILE *f);
 N
 L 48 "project.h" 2
 N
+Nvoid labFinalReceive(void);
+Nvoid labFinal(void);
 Nvoid setupHardware(void);
-Nvoid receive(void);
-Nvoid transmit(void);
-Nvoid trial_recieve(void);
+Nvoid transmitAndReceive(void);
 W "project.h" 53 24 last line of file ends without a newline
 Nvoid displayData(void);
 L 6 "Systic.h" 2

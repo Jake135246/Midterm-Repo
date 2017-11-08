@@ -39,30 +39,30 @@ void CAN_Init(){
 // --------------------------------------------------------------------------------------
 void CANIntHandler(void) {
 
-	unsigned long status = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE); // read interrupt status cause
-	printf("Interrupt status id: %d\n", status);
+	unsigned long status = CANIntStatus(CAN0_BASE, CAN_INT_STS_CAUSE);						 // read interrupt status cause, 1-7 it will correspond with an Rx (1-7) or Tx (8-14) object, or be equal to 32768 for a system interrupt
+	printf("Interrupt status id: %d\n", status);																	 // print status for debugging
 	
-	if(status == CAN_INT_INTID_STATUS) {                           // controller status interrupt
-		status = CANStatusGet(CAN0_BASE, CAN_STS_CONTROL); // read back error bits, do something with them?
-		errFlag = 1;
+	if(status == CAN_INT_INTID_STATUS) {                          								 // controller status interrupt
+		status = CANStatusGet(CAN0_BASE, CAN_STS_CONTROL);													 // read back error bits, do something with them?
+		errFlag = 1;																																 // set error flag
 	} 
 	
-	else if(1<=status | NUM_RX_MESSAGES >= status) {
-		CANIntClear(CAN0_BASE, status); // clear interrupt	
-		errFlag = 0; // clear any error flags	
-		CANMessageGet(CAN0_BASE, status, &RxObj[status-1], false);
-		MsgData[status-1][0]=RxMsgData[status-1][0];
+	else if(1<=status & NUM_RX_MESSAGES >= status) {															 // if the interrupt status is from 1-7 an object has been received
+		CANIntClear(CAN0_BASE, status); 																						 // clear interrupt	
+		errFlag = 0;																																 // clear any error flags	
+		CANMessageGet(CAN0_BASE, status, &RxObj[status-1], false); 									 // Get CAN message from buffer, store it into corresponding mailbox
+		MsgData[status-1][0]=RxMsgData[status-1][0];																 // move from internal mailbox to buffer accessible by any module	
 		MsgData[status-1][1]=RxMsgData[status-1][1];
 		MsgData[status-1][2]=RxMsgData[status-1][2];
 		MsgData[status-1][3]=RxMsgData[status-1][3];
 	}
 
-	else if((NUM_RX_MESSAGES+1)<=status |(NUM_RX_MESSAGES+NUM_TX_MESSAGES)>= status) {
-		CANIntClear(CAN0_BASE, status);
-		errFlag = 0;
+	else if((NUM_RX_MESSAGES+1)<=status & (NUM_RX_MESSAGES+NUM_TX_MESSAGES)>= status) { // if this case is triggered a message has been transmitted
+		CANIntClear(CAN0_BASE, status);																							 // clear corresponding interrupt
+		errFlag = 0;																																 // clear any error flags
 }
 	
-	else { // should never happen
+	else {																																				 // should never happen
 		printf("Unexpected CAN bus interrupt\n");
 	}
 }
@@ -86,12 +86,19 @@ void CAN_Transmit(uint8_t data[4], uint8_t msgSelect){
 // --------------------------------------------------------------------------------------
 
 void initReceiver(){
+	if(MESSAGE1)
 	CANMessageSet(CAN0_BASE, 1, &RxObj[0], MSG_OBJ_TYPE_RX);	// Load msg into CAN peripheral message object 1 so it can trigger interrupts on any matched rx messages
+	if(MESSAGE2)
 	CANMessageSet(CAN0_BASE, 2, &RxObj[1], MSG_OBJ_TYPE_RX);
-	CANMessageSet(CAN0_BASE, 3, &RxObj[2], MSG_OBJ_TYPE_RX);	
-	CANMessageSet(CAN0_BASE, 4, &RxObj[3], MSG_OBJ_TYPE_RX);	
+	if(MESSAGE3)
+	CANMessageSet(CAN0_BASE, 3, &RxObj[2], MSG_OBJ_TYPE_RX);
+	if(MESSAGE4)
+	CANMessageSet(CAN0_BASE, 4, &RxObj[3], MSG_OBJ_TYPE_RX);
+	if(MESSAGE5)
 	CANMessageSet(CAN0_BASE, 5, &RxObj[4], MSG_OBJ_TYPE_RX);
-	CANMessageSet(CAN0_BASE, 6, &RxObj[5], MSG_OBJ_TYPE_RX);	
+	if(MESSAGE6)
+	CANMessageSet(CAN0_BASE, 6, &RxObj[5], MSG_OBJ_TYPE_RX);
+	if(MESSAGE7)
 	CANMessageSet(CAN0_BASE, 7, &RxObj[6], MSG_OBJ_TYPE_RX);
 }
 

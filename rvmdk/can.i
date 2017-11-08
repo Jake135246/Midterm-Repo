@@ -18446,18 +18446,18 @@ int fgetc(FILE *f);
 
 
 
+
+
+#line 70 "CAN.h"
+
+
 extern unsigned char MsgData[7][4];
 
 void initReceiver(void);
-void Steady_Receiver(void);
 void CAN_Transmit(uint8_t data[4], uint8_t msgSelect);
 void CANIntHandler(void);
 void CAN_Init(void);
-void CAN_Slave(void);
 void Init_Structs(void);
-void Init_Structs1(void);
-void Init_Structs2(void);
-void Init_Structs3(void);
 #line 2 "CAN.c"
 #line 3 "CAN.c"
 #line 4 "CAN.c"
@@ -18499,30 +18499,30 @@ void CAN_Init(){
 
 void CANIntHandler(void) {
 
-	unsigned long status = CANIntStatus(0x40040000, CAN_INT_STS_CAUSE); 
-	printf("Interrupt status id: %d\n", status);
+	unsigned long status = CANIntStatus(0x40040000, CAN_INT_STS_CAUSE);						 
+	printf("Interrupt status id: %d\n", status);																	 
 	
-	if(status == 0x00008000) {                           
-		status = CANStatusGet(0x40040000, CAN_STS_CONTROL); 
-		errFlag = 1;
+	if(status == 0x00008000) {                          								 
+		status = CANStatusGet(0x40040000, CAN_STS_CONTROL);													 
+		errFlag = 1;																																 
 	} 
 	
-	else if(1<=status | 7 >= status) {
-		CANIntClear(0x40040000, status); 
-		errFlag = 0; 
-		CANMessageGet(0x40040000, status, &RxObj[status-1], 0);
-		MsgData[status-1][0]=RxMsgData[status-1][0];
+	else if(1<=status & 7 >= status) {															 
+		CANIntClear(0x40040000, status); 																						 
+		errFlag = 0;																																 
+		CANMessageGet(0x40040000, status, &RxObj[status-1], 0); 									 
+		MsgData[status-1][0]=RxMsgData[status-1][0];																 
 		MsgData[status-1][1]=RxMsgData[status-1][1];
 		MsgData[status-1][2]=RxMsgData[status-1][2];
 		MsgData[status-1][3]=RxMsgData[status-1][3];
 	}
 
-	else if((7+1)<=status |(7+7)>= status) {
-		CANIntClear(0x40040000, status);
-		errFlag = 0;
+	else if((7+1)<=status & (7+7)>= status) { 
+		CANIntClear(0x40040000, status);																							 
+		errFlag = 0;																																 
 }
 	
-	else { 
+	else {																																				 
 		printf("Unexpected CAN bus interrupt\n");
 	}
 }
@@ -18546,12 +18546,19 @@ void CAN_Transmit(uint8_t data[4], uint8_t msgSelect){
 
 
 void initReceiver(){
+	if(1)
 	CANMessageSet(0x40040000, 1, &RxObj[0], MSG_OBJ_TYPE_RX);	
+	if(1)
 	CANMessageSet(0x40040000, 2, &RxObj[1], MSG_OBJ_TYPE_RX);
-	CANMessageSet(0x40040000, 3, &RxObj[2], MSG_OBJ_TYPE_RX);	
-	CANMessageSet(0x40040000, 4, &RxObj[3], MSG_OBJ_TYPE_RX);	
+	if(1)
+	CANMessageSet(0x40040000, 3, &RxObj[2], MSG_OBJ_TYPE_RX);
+	if(0)
+	CANMessageSet(0x40040000, 4, &RxObj[3], MSG_OBJ_TYPE_RX);
+	if(1)
 	CANMessageSet(0x40040000, 5, &RxObj[4], MSG_OBJ_TYPE_RX);
-	CANMessageSet(0x40040000, 6, &RxObj[5], MSG_OBJ_TYPE_RX);	
+	if(1)
+	CANMessageSet(0x40040000, 6, &RxObj[5], MSG_OBJ_TYPE_RX);
+	if(0)
 	CANMessageSet(0x40040000, 7, &RxObj[6], MSG_OBJ_TYPE_RX);
 }
 
