@@ -65343,10 +65343,10 @@ N
 N#define MESSAGE1 1			
 N#define MESSAGE2 1
 N#define MESSAGE3 1 
-N#define MESSAGE4 0
+N#define MESSAGE4 1
 N#define MESSAGE5 1
 N#define MESSAGE6 1
-N#define MESSAGE7 0
+N#define MESSAGE7 1
 N
 N
 Nextern unsigned char MsgData[NUM_RX_MESSAGES][4];
@@ -65483,7 +65483,7 @@ X	if(1)
 N	CANMessageSet(CAN0_BASE, 3, &RxObj[2], MSG_OBJ_TYPE_RX);
 X	CANMessageSet(0x40040000, 3, &RxObj[2], MSG_OBJ_TYPE_RX);
 N	if(MESSAGE4)
-X	if(0)
+X	if(1)
 N	CANMessageSet(CAN0_BASE, 4, &RxObj[3], MSG_OBJ_TYPE_RX);
 X	CANMessageSet(0x40040000, 4, &RxObj[3], MSG_OBJ_TYPE_RX);
 N	if(MESSAGE5)
@@ -65495,7 +65495,7 @@ X	if(1)
 N	CANMessageSet(CAN0_BASE, 6, &RxObj[5], MSG_OBJ_TYPE_RX);
 X	CANMessageSet(0x40040000, 6, &RxObj[5], MSG_OBJ_TYPE_RX);
 N	if(MESSAGE7)
-X	if(0)
+X	if(1)
 N	CANMessageSet(CAN0_BASE, 7, &RxObj[6], MSG_OBJ_TYPE_RX);
 X	CANMessageSet(0x40040000, 7, &RxObj[6], MSG_OBJ_TYPE_RX);
 N}

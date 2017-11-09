@@ -63,10 +63,10 @@
 #define MESSAGE1 1			
 #define MESSAGE2 1
 #define MESSAGE3 1 
-#define MESSAGE4 0
+#define MESSAGE4 1
 #define MESSAGE5 1
 #define MESSAGE6 1
-#define MESSAGE7 0
+#define MESSAGE7 1
 
 
 extern unsigned char MsgData[NUM_RX_MESSAGES][4];

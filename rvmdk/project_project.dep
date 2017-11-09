@@ -1,5 +1,5 @@
 Dependencies for Project 'project', Target 'project': (DO NOT MODIFY !)
-F (.\project.c)(0x5A036862)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\.. -I .\driverlib -I .\src -I .\inc --c99-I.\RTE\_project-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\rvmdk\project.o --list_dir ".\\rvmdk\\" --list --omf_browse .\rvmdk\project.crf --depend .\rvmdk\project.d)
+F (.\project.c)(0x5A038696)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\.. -I .\driverlib -I .\src -I .\inc --c99-I.\RTE\_project-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\rvmdk\project.o --list_dir ".\\rvmdk\\" --list --omf_browse .\rvmdk\project.crf --depend .\rvmdk\project.d)
 I (project.h)(0x5A035CD2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x588C2C04)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588C2C04)
@@ -43,7 +43,7 @@ I (driverlib/udma.h)(0x59F9FAAD)
 I (driverlib/usb.h)(0x59F9FAAD)
 I (driverlib/watchdog.h)(0x59F9FAAD)
 I (.\inc\tm4c123gh6pm.h)(0x59F9FAB0)
-I (CAN.h)(0x5A0208E7)
+I (CAN.h)(0x5A038696)
 I (inc/hw_types.h)(0x59F9FAAF)
 I (inc/hw_can.h)(0x59F9FAAE)
 I (inc/hw_ints.h)(0x59F9FAAE)
@@ -98,7 +98,7 @@ I (driverlib/udma.h)(0x59F9FAAD)
 I (driverlib/usb.h)(0x59F9FAAD)
 I (driverlib/watchdog.h)(0x59F9FAAD)
 I (.\inc\tm4c123gh6pm.h)(0x59F9FAB0)
-I (CAN.h)(0x5A0208E7)
+I (CAN.h)(0x5A038696)
 I (inc/hw_types.h)(0x59F9FAAF)
 I (inc/hw_can.h)(0x59F9FAAE)
 I (inc/hw_ints.h)(0x59F9FAAE)
@@ -163,7 +163,7 @@ I (src/Uart_helper.h)(0x59F9FAB2)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588C2C04)
 F (.\GPIO_init.h)(0x59F9FAAB)()
 F (.\CAN.c)(0x5A0206B9)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\.. -I .\driverlib -I .\src -I .\inc --c99-I.\RTE\_project-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\rvmdk\can.o --list_dir ".\\rvmdk\\" --list --omf_browse .\rvmdk\can.crf --depend .\rvmdk\can.d)
-I (CAN.h)(0x5A0208E7)
+I (CAN.h)(0x5A038696)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x588C2C04)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x588C2C04)
 I (C:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x588C2C04)
@@ -210,7 +210,7 @@ I (driverlib/usb.h)(0x59F9FAAD)
 I (driverlib/watchdog.h)(0x59F9FAAD)
 I (.\inc\tm4c123gh6pm.h)(0x59F9FAB0)
 I (src/Uart_helper.h)(0x59F9FAB2)
-F (.\CAN.h)(0x5A0208E7)()
+F (.\CAN.h)(0x5A038696)()
 F (.\HAL_ADC.c)(0x5A034785)(-c --cpu Cortex-M4.fp -D__EVAL -D__MICROLIB -g -O2 --apcs=interwork --split_sections -I ..\.. -I .\driverlib -I .\src -I .\inc --c99-I.\RTE\_project-IC:\Keil_v5\ARM\PACK\ARM\CMSIS\5.0.1\CMSIS\Include-IC:\Keil_v5\ARM\PACK\Keil\TM4C_DFP\1.1.0\Device\Include\TM4C123-D__UVISION_VERSION="524" -D_RTE_ -DTM4C123GH6PM -Drvmdk -DPART_TM4C123GH6PM -DTARGET_IS_TM4C123_RB1-o .\rvmdk\hal_adc.o --list_dir ".\\rvmdk\\" --list --omf_browse .\rvmdk\hal_adc.crf --depend .\rvmdk\hal_adc.d)
 I (HAL_ADC.h)(0x5A034785)
 I (C:\Keil_v5\ARM\ARMCC\include\stdbool.h)(0x588C2C04)
@@ -257,7 +257,7 @@ I (driverlib/udma.h)(0x59F9FAAD)
 I (driverlib/usb.h)(0x59F9FAAD)
 I (driverlib/watchdog.h)(0x59F9FAAD)
 I (.\inc\tm4c123gh6pm.h)(0x59F9FAB0)
-I (CAN.h)(0x5A0208E7)
+I (CAN.h)(0x5A038696)
 I (inc/hw_types.h)(0x59F9FAAF)
 I (inc/hw_can.h)(0x59F9FAAE)
 I (inc/hw_ints.h)(0x59F9FAAE)

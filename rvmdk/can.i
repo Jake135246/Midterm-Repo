@@ -18552,13 +18552,13 @@ void initReceiver(){
 	CANMessageSet(0x40040000, 2, &RxObj[1], MSG_OBJ_TYPE_RX);
 	if(1)
 	CANMessageSet(0x40040000, 3, &RxObj[2], MSG_OBJ_TYPE_RX);
-	if(0)
+	if(1)
 	CANMessageSet(0x40040000, 4, &RxObj[3], MSG_OBJ_TYPE_RX);
 	if(1)
 	CANMessageSet(0x40040000, 5, &RxObj[4], MSG_OBJ_TYPE_RX);
 	if(1)
 	CANMessageSet(0x40040000, 6, &RxObj[5], MSG_OBJ_TYPE_RX);
-	if(0)
+	if(1)
 	CANMessageSet(0x40040000, 7, &RxObj[6], MSG_OBJ_TYPE_RX);
 }
 

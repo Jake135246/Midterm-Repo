@@ -65396,10 +65396,10 @@ N
 N#define MESSAGE1 1			
 N#define MESSAGE2 1
 N#define MESSAGE3 1 
-N#define MESSAGE4 0
+N#define MESSAGE4 1
 N#define MESSAGE5 1
 N#define MESSAGE6 1
-N#define MESSAGE7 0
+N#define MESSAGE7 1
 N
 N
 Nextern unsigned char MsgData[NUM_RX_MESSAGES][4];

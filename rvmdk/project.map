@@ -14,12 +14,13 @@ Section Cross References
     project.o(i.labFinal) refers to sysctl.o(i.SysCtlClockGet) for SysCtlClockGet
     project.o(i.labFinal) refers to sysctl.o(.emb_text) for SysCtlDelay
     project.o(i.labFinalReceive) refers to can.o(i.initReceiver) for initReceiver
+    project.o(i.labFinalReceive) refers to printf1.o(i.__0printf$1) for __2printf
     project.o(i.labFinalReceive) refers to gpio.o(i.GPIOPinWrite) for GPIOPinWrite
     project.o(i.labFinalReceive) refers to can.o(.bss) for MsgData
     project.o(i.main) refers to project.o(i.setupHardware) for setupHardware
     project.o(i.main) refers to sysctl.o(i.SysCtlClockGet) for SysCtlClockGet
     project.o(i.main) refers to sysctl.o(.emb_text) for SysCtlDelay
-    project.o(i.main) refers to project.o(i.labFinalReceive) for labFinalReceive
+    project.o(i.main) refers to project.o(i.transmitAndReceive) for transmitAndReceive
     project.o(i.setupHardware) refers to systic.o(i.ClockSetup) for ClockSetup
     project.o(i.setupHardware) refers to gpio_init.o(i.GPIO_Setup) for GPIO_Setup
     project.o(i.setupHardware) refers to uart_helper.o(i.UartSetup) for UartSetup
@@ -484,19 +485,13 @@ Section Cross References
 
 Removing Unused input sections from the image.
 
-    Removing project.o(i.displayData), (152 bytes).
     Removing project.o(i.labFinal), (80 bytes).
-    Removing project.o(i.transmitAndReceive), (164 bytes).
-    Removing project.o(.conststring), (557 bytes).
+    Removing project.o(i.labFinalReceive), (112 bytes).
     Removing startup_rvmdk.o(HEAP), (0 bytes).
     Removing startup_rvmdk.o(.text), (0 bytes).
     Removing systic.o(i.delay), (48 bytes).
     Removing systic.o(i.delayMS), (26 bytes).
-    Removing uart_helper.o(i.UART_InChar), (20 bytes).
     Removing uart_helper.o(i.ferror), (4 bytes).
-    Removing uart_helper.o(i.fgetc), (4 bytes).
-    Removing can.o(i.CAN_Transmit), (132 bytes).
-    Removing can.o(.conststring), (66 bytes).
     Removing can.o(.data), (1 bytes).
     Removing hal_adc.o(i.ADCReadChan), (52 bytes).
     Removing hal_adc.o(i.ADCReadChan2), (52 bytes).
@@ -587,6 +582,7 @@ Removing Unused input sections from the image.
     Removing gpio.o(i.GPIOPinTypeWakeHigh), (30 bytes).
     Removing gpio.o(i.GPIOPinTypeWakeLow), (30 bytes).
     Removing gpio.o(i.GPIOPinWakeStatus), (6 bytes).
+    Removing gpio.o(i.GPIOPinWrite), (6 bytes).
     Removing gpio.o(i._GPIOIntNumberGet), (80 bytes).
     Removing interrupt.o(i.IntDisable), (100 bytes).
     Removing interrupt.o(i.IntIsEnabled), (96 bytes).
@@ -716,7 +712,7 @@ Removing Unused input sections from the image.
     Removing cdrcmple.o(.text), (48 bytes).
     Removing depilogue.o(.text), (186 bytes).
 
-231 unused section(s) (total 8910 bytes) removed from the image.
+226 unused section(s) (total 7933 bytes) removed from the image.
 
 ==============================================================================
 
@@ -730,37 +726,37 @@ Image Symbol Table
     ../clib/../cmprslib/zerorunl.c           0x00000000   Number         0  __dczerorl.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
-    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
+    ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
     ../clib/microlib/stdio/getc.c            0x00000000   Number         0  getc.o ABSOLUTE
-    ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
     ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdin.o ABSOLUTE
+    ../clib/microlib/stdio/streams.c         0x00000000   Number         0  stdout.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
@@ -824,62 +820,69 @@ Image Symbol Table
     i.CANMessageSet                          0x0000082a   Section        0  can.o(i.CANMessageSet)
     i.CANStatusGet                           0x00000990   Section        0  can.o(i.CANStatusGet)
     i.CAN_Init                               0x000009d4   Section        0  can.o(i.CAN_Init)
-    i.ClockSetup                             0x00000ac0   Section        0  systic.o(i.ClockSetup)
-    i.GPIODirModeSet                         0x00000ae0   Section        0  gpio.o(i.GPIODirModeSet)
-    i.GPIOPadConfigSet                       0x00000b08   Section        0  gpio.o(i.GPIOPadConfigSet)
-    i.GPIOPinConfigure                       0x00000c40   Section        0  gpio.o(i.GPIOPinConfigure)
-    i.GPIOPinTypeADC                         0x00000c84   Section        0  gpio.o(i.GPIOPinTypeADC)
-    i.GPIOPinTypeCAN                         0x00000ca0   Section        0  gpio.o(i.GPIOPinTypeCAN)
-    i.GPIOPinTypeGPIOOutput                  0x00000cbc   Section        0  gpio.o(i.GPIOPinTypeGPIOOutput)
-    i.GPIOPinTypeUART                        0x00000cd8   Section        0  gpio.o(i.GPIOPinTypeUART)
-    i.GPIOPinWrite                           0x00000cf4   Section        0  gpio.o(i.GPIOPinWrite)
-    i.GPIO_Setup                             0x00000cfc   Section        0  gpio_init.o(i.GPIO_Setup)
-    i.Init_Structs                           0x00000d2c   Section        0  can.o(i.Init_Structs)
-    i.IntEnable                              0x00000dfc   Section        0  interrupt.o(i.IntEnable)
-    i.IntRegister                            0x00000e60   Section        0  interrupt.o(i.IntRegister)
-    i.SetupADC                               0x00000e94   Section        0  hal_adc.o(i.SetupADC)
-    i.SetupADCPins                           0x00000f34   Section        0  hal_adc.o(i.SetupADCPins)
-    i.SysCtlClockGet                         0x00000f40   Section        0  sysctl.o(i.SysCtlClockGet)
-    i.SysCtlClockSet                         0x00001094   Section        0  sysctl.o(i.SysCtlClockSet)
-    i.SysCtlPeripheralEnable                 0x000011b4   Section        0  sysctl.o(i.SysCtlPeripheralEnable)
-    i.SysCtlPeripheralReady                  0x000011dc   Section        0  sysctl.o(i.SysCtlPeripheralReady)
-    i.SysTickEnable                          0x00001208   Section        0  systick.o(i.SysTickEnable)
-    i.SysTickPeriodSet                       0x00001216   Section        0  systick.o(i.SysTickPeriodSet)
-    i.UARTConfigSetExpClk                    0x00001220   Section        0  uart.o(i.UARTConfigSetExpClk)
-    i.UART_OutChar                           0x00001290   Section        0  uart_helper.o(i.UART_OutChar)
-    i.UartSetup                              0x000012a0   Section        0  uart_helper.o(i.UartSetup)
-    i.__0printf$1                            0x00001308   Section        0  printf1.o(i.__0printf$1)
-    i.__scatterload_copy                     0x00001328   Section       14  handlers.o(i.__scatterload_copy)
-    i.__scatterload_null                     0x00001336   Section        2  handlers.o(i.__scatterload_null)
-    i.__scatterload_zeroinit                 0x00001338   Section       14  handlers.o(i.__scatterload_zeroinit)
-    i._printf_core                           0x00001348   Section        0  printf1.o(i._printf_core)
-    _printf_core                             0x00001349   Thumb Code   336  printf1.o(i._printf_core)
-    i.fputc                                  0x0000149c   Section        0  uart_helper.o(i.fputc)
-    i.initReceiver                           0x000014c0   Section        0  can.o(i.initReceiver)
-    i.labFinalReceive                        0x00001514   Section        0  project.o(i.labFinalReceive)
-    i.main                                   0x00001564   Section        0  project.o(i.main)
-    i.setupHardware                          0x0000157c   Section        0  project.o(i.setupHardware)
-    .constdata                               0x00001624   Section       32  can.o(.constdata)
-    g_ui16CANBitValues                       0x00001624   Data          32  can.o(.constdata)
-    .constdata                               0x00001644   Section      552  gpio.o(.constdata)
-    g_ppui32GPIOIntMapBlizzard               0x00001644   Data         192  gpio.o(.constdata)
-    g_ppui32GPIOIntMapSnowflake              0x00001704   Data         216  gpio.o(.constdata)
-    g_pui32GPIOBaseAddrs                     0x000017dc   Data         144  gpio.o(.constdata)
-    .constdata                               0x0000186c   Section      268  interrupt.o(.constdata)
-    g_pui32Priority                          0x0000186c   Data          32  interrupt.o(.constdata)
-    g_pui32Regs                              0x0000188c   Data         156  interrupt.o(.constdata)
-    g_pui32EnRegs                            0x00001928   Data          20  interrupt.o(.constdata)
-    g_pui32Dii16Regs                         0x0000193c   Data          20  interrupt.o(.constdata)
-    g_pui32PendRegs                          0x00001950   Data          20  interrupt.o(.constdata)
-    g_pui32UnpendRegs                        0x00001964   Data          20  interrupt.o(.constdata)
-    .constdata                               0x00001978   Section      596  sysctl.o(.constdata)
-    g_pui32VCOFrequencies                    0x00001978   Data           8  sysctl.o(.constdata)
-    g_pui32Xtals                             0x00001980   Data         108  sysctl.o(.constdata)
-    g_pppui32XTALtoVCO                       0x000019ec   Data         432  sysctl.o(.constdata)
-    g_sXTALtoMEMTIM                          0x00001b9c   Data          48  sysctl.o(.constdata)
+    i.CAN_Transmit                           0x00000ac0   Section        0  can.o(i.CAN_Transmit)
+    i.ClockSetup                             0x00000b44   Section        0  systic.o(i.ClockSetup)
+    i.GPIODirModeSet                         0x00000b64   Section        0  gpio.o(i.GPIODirModeSet)
+    i.GPIOPadConfigSet                       0x00000b8c   Section        0  gpio.o(i.GPIOPadConfigSet)
+    i.GPIOPinConfigure                       0x00000cc4   Section        0  gpio.o(i.GPIOPinConfigure)
+    i.GPIOPinTypeADC                         0x00000d08   Section        0  gpio.o(i.GPIOPinTypeADC)
+    i.GPIOPinTypeCAN                         0x00000d24   Section        0  gpio.o(i.GPIOPinTypeCAN)
+    i.GPIOPinTypeGPIOOutput                  0x00000d40   Section        0  gpio.o(i.GPIOPinTypeGPIOOutput)
+    i.GPIOPinTypeUART                        0x00000d5c   Section        0  gpio.o(i.GPIOPinTypeUART)
+    i.GPIO_Setup                             0x00000d78   Section        0  gpio_init.o(i.GPIO_Setup)
+    i.Init_Structs                           0x00000da8   Section        0  can.o(i.Init_Structs)
+    i.IntEnable                              0x00000e78   Section        0  interrupt.o(i.IntEnable)
+    i.IntRegister                            0x00000edc   Section        0  interrupt.o(i.IntRegister)
+    i.SetupADC                               0x00000f10   Section        0  hal_adc.o(i.SetupADC)
+    i.SetupADCPins                           0x00000fb0   Section        0  hal_adc.o(i.SetupADCPins)
+    i.SysCtlClockGet                         0x00000fbc   Section        0  sysctl.o(i.SysCtlClockGet)
+    i.SysCtlClockSet                         0x00001110   Section        0  sysctl.o(i.SysCtlClockSet)
+    i.SysCtlPeripheralEnable                 0x00001230   Section        0  sysctl.o(i.SysCtlPeripheralEnable)
+    i.SysCtlPeripheralReady                  0x00001258   Section        0  sysctl.o(i.SysCtlPeripheralReady)
+    i.SysTickEnable                          0x00001284   Section        0  systick.o(i.SysTickEnable)
+    i.SysTickPeriodSet                       0x00001292   Section        0  systick.o(i.SysTickPeriodSet)
+    i.UARTConfigSetExpClk                    0x0000129c   Section        0  uart.o(i.UARTConfigSetExpClk)
+    i.UART_InChar                            0x0000130c   Section        0  uart_helper.o(i.UART_InChar)
+    i.UART_OutChar                           0x00001320   Section        0  uart_helper.o(i.UART_OutChar)
+    i.UartSetup                              0x00001330   Section        0  uart_helper.o(i.UartSetup)
+    i.__0printf$1                            0x00001398   Section        0  printf1.o(i.__0printf$1)
+    i.__scatterload_copy                     0x000013b8   Section       14  handlers.o(i.__scatterload_copy)
+    i.__scatterload_null                     0x000013c6   Section        2  handlers.o(i.__scatterload_null)
+    i.__scatterload_zeroinit                 0x000013c8   Section       14  handlers.o(i.__scatterload_zeroinit)
+    i._printf_core                           0x000013d8   Section        0  printf1.o(i._printf_core)
+    _printf_core                             0x000013d9   Thumb Code   336  printf1.o(i._printf_core)
+    i.displayData                            0x0000152c   Section        0  project.o(i.displayData)
+    i.fgetc                                  0x000015c4   Section        0  uart_helper.o(i.fgetc)
+    i.fputc                                  0x000015c8   Section        0  uart_helper.o(i.fputc)
+    i.getc                                   0x000015ea   Section        0  getc.o(i.getc)
+    i.initReceiver                           0x000015f0   Section        0  can.o(i.initReceiver)
+    i.main                                   0x00001660   Section        0  project.o(i.main)
+    i.setupHardware                          0x00001678   Section        0  project.o(i.setupHardware)
+    i.transmitAndReceive                     0x00001720   Section        0  project.o(i.transmitAndReceive)
+    .constdata                               0x000017c4   Section       32  can.o(.constdata)
+    g_ui16CANBitValues                       0x000017c4   Data          32  can.o(.constdata)
+    .constdata                               0x000017e4   Section      552  gpio.o(.constdata)
+    g_ppui32GPIOIntMapBlizzard               0x000017e4   Data         192  gpio.o(.constdata)
+    g_ppui32GPIOIntMapSnowflake              0x000018a4   Data         216  gpio.o(.constdata)
+    g_pui32GPIOBaseAddrs                     0x0000197c   Data         144  gpio.o(.constdata)
+    .constdata                               0x00001a0c   Section      268  interrupt.o(.constdata)
+    g_pui32Priority                          0x00001a0c   Data          32  interrupt.o(.constdata)
+    g_pui32Regs                              0x00001a2c   Data         156  interrupt.o(.constdata)
+    g_pui32EnRegs                            0x00001ac8   Data          20  interrupt.o(.constdata)
+    g_pui32Dii16Regs                         0x00001adc   Data          20  interrupt.o(.constdata)
+    g_pui32PendRegs                          0x00001af0   Data          20  interrupt.o(.constdata)
+    g_pui32UnpendRegs                        0x00001b04   Data          20  interrupt.o(.constdata)
+    .constdata                               0x00001b18   Section      596  sysctl.o(.constdata)
+    g_pui32VCOFrequencies                    0x00001b18   Data           8  sysctl.o(.constdata)
+    g_pui32Xtals                             0x00001b20   Data         108  sysctl.o(.constdata)
+    g_pppui32XTALtoVCO                       0x00001b8c   Data         432  sysctl.o(.constdata)
+    g_sXTALtoMEMTIM                          0x00001d3c   Data          48  sysctl.o(.constdata)
+    .conststring                             0x00001d6c   Section      557  project.o(.conststring)
+    .conststring                             0x00001f9c   Section       66  can.o(.conststring)
     .data                                    0x20000000   Section        8  can.o(.data)
     .data                                    0x20000008   Section        4  can.o(.data)
-    .data                                    0x2000000c   Section        4  stdout.o(.data)
+    .data                                    0x2000000c   Section        4  stdin.o(.data)
+    .data                                    0x20000010   Section        4  stdout.o(.data)
     vtable                                   0x20000400   Section      620  interrupt.o(vtable)
     g_pfnRAMVectors                          0x20000400   Data         620  interrupt.o(vtable)
     .bss                                     0x2000066c   Section      364  can.o(.bss)
@@ -972,47 +975,52 @@ Image Symbol Table
     CANMessageSet                            0x0000082b   Thumb Code   358  can.o(i.CANMessageSet)
     CANStatusGet                             0x00000991   Thumb Code    68  can.o(i.CANStatusGet)
     CAN_Init                                 0x000009d5   Thumb Code   110  can.o(i.CAN_Init)
-    ClockSetup                               0x00000ac1   Thumb Code    22  systic.o(i.ClockSetup)
-    GPIODirModeSet                           0x00000ae1   Thumb Code    40  gpio.o(i.GPIODirModeSet)
-    GPIOPadConfigSet                         0x00000b09   Thumb Code   312  gpio.o(i.GPIOPadConfigSet)
-    GPIOPinConfigure                         0x00000c41   Thumb Code    60  gpio.o(i.GPIOPinConfigure)
-    GPIOPinTypeADC                           0x00000c85   Thumb Code    28  gpio.o(i.GPIOPinTypeADC)
-    GPIOPinTypeCAN                           0x00000ca1   Thumb Code    28  gpio.o(i.GPIOPinTypeCAN)
-    GPIOPinTypeGPIOOutput                    0x00000cbd   Thumb Code    28  gpio.o(i.GPIOPinTypeGPIOOutput)
-    GPIOPinTypeUART                          0x00000cd9   Thumb Code    28  gpio.o(i.GPIOPinTypeUART)
-    GPIOPinWrite                             0x00000cf5   Thumb Code     6  gpio.o(i.GPIOPinWrite)
-    GPIO_Setup                               0x00000cfd   Thumb Code    38  gpio_init.o(i.GPIO_Setup)
-    Init_Structs                             0x00000d2d   Thumb Code   198  can.o(i.Init_Structs)
-    IntEnable                                0x00000dfd   Thumb Code    92  interrupt.o(i.IntEnable)
-    IntRegister                              0x00000e61   Thumb Code    44  interrupt.o(i.IntRegister)
-    SetupADC                                 0x00000e95   Thumb Code   150  hal_adc.o(i.SetupADC)
-    SetupADCPins                             0x00000f35   Thumb Code     8  hal_adc.o(i.SetupADCPins)
-    SysCtlClockGet                           0x00000f41   Thumb Code   304  sysctl.o(i.SysCtlClockGet)
-    SysCtlClockSet                           0x00001095   Thumb Code   270  sysctl.o(i.SysCtlClockSet)
-    SysCtlPeripheralEnable                   0x000011b5   Thumb Code    36  sysctl.o(i.SysCtlPeripheralEnable)
-    SysCtlPeripheralReady                    0x000011dd   Thumb Code    40  sysctl.o(i.SysCtlPeripheralReady)
-    SysTickEnable                            0x00001209   Thumb Code    14  systick.o(i.SysTickEnable)
-    SysTickPeriodSet                         0x00001217   Thumb Code    10  systick.o(i.SysTickPeriodSet)
-    UARTConfigSetExpClk                      0x00001221   Thumb Code   110  uart.o(i.UARTConfigSetExpClk)
-    UART_OutChar                             0x00001291   Thumb Code    12  uart_helper.o(i.UART_OutChar)
-    UartSetup                                0x000012a1   Thumb Code    88  uart_helper.o(i.UartSetup)
-    __0printf$1                              0x00001309   Thumb Code    22  printf1.o(i.__0printf$1)
-    __1printf$1                              0x00001309   Thumb Code     0  printf1.o(i.__0printf$1)
-    __2printf                                0x00001309   Thumb Code     0  printf1.o(i.__0printf$1)
-    __scatterload_copy                       0x00001329   Thumb Code    14  handlers.o(i.__scatterload_copy)
-    __scatterload_null                       0x00001337   Thumb Code     2  handlers.o(i.__scatterload_null)
-    __scatterload_zeroinit                   0x00001339   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
-    fputc                                    0x0000149d   Thumb Code    34  uart_helper.o(i.fputc)
-    initReceiver                             0x000014c1   Thumb Code    76  can.o(i.initReceiver)
-    labFinalReceive                          0x00001515   Thumb Code    70  project.o(i.labFinalReceive)
-    main                                     0x00001565   Thumb Code    22  project.o(i.main)
-    setupHardware                            0x0000157d   Thumb Code    50  project.o(i.setupHardware)
-    Region$$Table$$Base                      0x00001bcc   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00001bec   Number         0  anon$$obj.o(Region$$Table)
+    CAN_Transmit                             0x00000ac1   Thumb Code    82  can.o(i.CAN_Transmit)
+    ClockSetup                               0x00000b45   Thumb Code    22  systic.o(i.ClockSetup)
+    GPIODirModeSet                           0x00000b65   Thumb Code    40  gpio.o(i.GPIODirModeSet)
+    GPIOPadConfigSet                         0x00000b8d   Thumb Code   312  gpio.o(i.GPIOPadConfigSet)
+    GPIOPinConfigure                         0x00000cc5   Thumb Code    60  gpio.o(i.GPIOPinConfigure)
+    GPIOPinTypeADC                           0x00000d09   Thumb Code    28  gpio.o(i.GPIOPinTypeADC)
+    GPIOPinTypeCAN                           0x00000d25   Thumb Code    28  gpio.o(i.GPIOPinTypeCAN)
+    GPIOPinTypeGPIOOutput                    0x00000d41   Thumb Code    28  gpio.o(i.GPIOPinTypeGPIOOutput)
+    GPIOPinTypeUART                          0x00000d5d   Thumb Code    28  gpio.o(i.GPIOPinTypeUART)
+    GPIO_Setup                               0x00000d79   Thumb Code    38  gpio_init.o(i.GPIO_Setup)
+    Init_Structs                             0x00000da9   Thumb Code   198  can.o(i.Init_Structs)
+    IntEnable                                0x00000e79   Thumb Code    92  interrupt.o(i.IntEnable)
+    IntRegister                              0x00000edd   Thumb Code    44  interrupt.o(i.IntRegister)
+    SetupADC                                 0x00000f11   Thumb Code   150  hal_adc.o(i.SetupADC)
+    SetupADCPins                             0x00000fb1   Thumb Code     8  hal_adc.o(i.SetupADCPins)
+    SysCtlClockGet                           0x00000fbd   Thumb Code   304  sysctl.o(i.SysCtlClockGet)
+    SysCtlClockSet                           0x00001111   Thumb Code   270  sysctl.o(i.SysCtlClockSet)
+    SysCtlPeripheralEnable                   0x00001231   Thumb Code    36  sysctl.o(i.SysCtlPeripheralEnable)
+    SysCtlPeripheralReady                    0x00001259   Thumb Code    40  sysctl.o(i.SysCtlPeripheralReady)
+    SysTickEnable                            0x00001285   Thumb Code    14  systick.o(i.SysTickEnable)
+    SysTickPeriodSet                         0x00001293   Thumb Code    10  systick.o(i.SysTickPeriodSet)
+    UARTConfigSetExpClk                      0x0000129d   Thumb Code   110  uart.o(i.UARTConfigSetExpClk)
+    UART_InChar                              0x0000130d   Thumb Code    14  uart_helper.o(i.UART_InChar)
+    UART_OutChar                             0x00001321   Thumb Code    12  uart_helper.o(i.UART_OutChar)
+    UartSetup                                0x00001331   Thumb Code    88  uart_helper.o(i.UartSetup)
+    __0printf$1                              0x00001399   Thumb Code    22  printf1.o(i.__0printf$1)
+    __1printf$1                              0x00001399   Thumb Code     0  printf1.o(i.__0printf$1)
+    __2printf                                0x00001399   Thumb Code     0  printf1.o(i.__0printf$1)
+    __scatterload_copy                       0x000013b9   Thumb Code    14  handlers.o(i.__scatterload_copy)
+    __scatterload_null                       0x000013c7   Thumb Code     2  handlers.o(i.__scatterload_null)
+    __scatterload_zeroinit                   0x000013c9   Thumb Code    14  handlers.o(i.__scatterload_zeroinit)
+    displayData                              0x0000152d   Thumb Code   118  project.o(i.displayData)
+    fgetc                                    0x000015c5   Thumb Code     4  uart_helper.o(i.fgetc)
+    fputc                                    0x000015c9   Thumb Code    34  uart_helper.o(i.fputc)
+    getc                                     0x000015eb   Thumb Code     4  getc.o(i.getc)
+    initReceiver                             0x000015f1   Thumb Code   104  can.o(i.initReceiver)
+    main                                     0x00001661   Thumb Code    22  project.o(i.main)
+    setupHardware                            0x00001679   Thumb Code    50  project.o(i.setupHardware)
+    transmitAndReceive                       0x00001721   Thumb Code    86  project.o(i.transmitAndReceive)
+    Region$$Table$$Base                      0x00001fe0   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x00002000   Number         0  anon$$obj.o(Region$$Table)
     errFlag                                  0x20000000   Data           1  can.o(.data)
     msgDataPtr                               0x20000004   Data           4  can.o(.data)
     msgData                                  0x20000008   Data           4  can.o(.data)
-    __stdout                                 0x2000000c   Data           4  stdout.o(.data)
+    __stdin                                  0x2000000c   Data           4  stdin.o(.data)
+    __stdout                                 0x20000010   Data           4  stdout.o(.data)
     RxMsgData                                0x2000066c   Data          56  can.o(.bss)
     MsgData                                  0x200006a4   Data          28  can.o(.bss)
     TxObj                                    0x200006c0   Data         140  can.o(.bss)
@@ -1027,9 +1035,9 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_IROM (Base: 0x00000000, Size: 0x00002258, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00001c00])
+  Load Region LR_IROM (Base: 0x00000000, Size: 0x0000266c, Max: 0x00040000, ABSOLUTE, COMPRESSED[0x00002014])
 
-    Execution Region ER_IROM (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00001bec, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM (Exec base: 0x00000000, Load base: 0x00000000, Size: 0x00002000, Max: 0x00040000, ABSOLUTE)
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
@@ -1067,60 +1075,68 @@ Memory Map of the image
     0x0000082a   0x0000082a   0x00000166   Code   RO          703    i.CANMessageSet     driverlib.lib(can.o)
     0x00000990   0x00000990   0x00000044   Code   RO          706    i.CANStatusGet      driverlib.lib(can.o)
     0x000009d4   0x000009d4   0x000000ec   Code   RO          311    i.CAN_Init          can.o
-    0x00000ac0   0x00000ac0   0x00000020   Code   RO          200    i.ClockSetup        systic.o
-    0x00000ae0   0x00000ae0   0x00000028   Code   RO          824    i.GPIODirModeSet    driverlib.lib(gpio.o)
-    0x00000b08   0x00000b08   0x00000138   Code   RO          836    i.GPIOPadConfigSet  driverlib.lib(gpio.o)
-    0x00000c40   0x00000c40   0x00000044   Code   RO          837    i.GPIOPinConfigure  driverlib.lib(gpio.o)
-    0x00000c84   0x00000c84   0x0000001c   Code   RO          839    i.GPIOPinTypeADC    driverlib.lib(gpio.o)
-    0x00000ca0   0x00000ca0   0x0000001c   Code   RO          840    i.GPIOPinTypeCAN    driverlib.lib(gpio.o)
-    0x00000cbc   0x00000cbc   0x0000001c   Code   RO          848    i.GPIOPinTypeGPIOOutput  driverlib.lib(gpio.o)
-    0x00000cd8   0x00000cd8   0x0000001c   Code   RO          860    i.GPIOPinTypeUART   driverlib.lib(gpio.o)
-    0x00000cf4   0x00000cf4   0x00000006   Code   RO          866    i.GPIOPinWrite      driverlib.lib(gpio.o)
-    0x00000cfa   0x00000cfa   0x00000002   PAD
-    0x00000cfc   0x00000cfc   0x00000030   Code   RO          292    i.GPIO_Setup        gpio_init.o
-    0x00000d2c   0x00000d2c   0x000000d0   Code   RO          313    i.Init_Structs      can.o
-    0x00000dfc   0x00000dfc   0x00000064   Code   RO         1127    i.IntEnable         driverlib.lib(interrupt.o)
-    0x00000e60   0x00000e60   0x00000034   Code   RO         1139    i.IntRegister       driverlib.lib(interrupt.o)
-    0x00000e94   0x00000e94   0x000000a0   Code   RO          362    i.SetupADC          hal_adc.o
-    0x00000f34   0x00000f34   0x0000000c   Code   RO          363    i.SetupADCPins      hal_adc.o
-    0x00000f40   0x00000f40   0x00000154   Code   RO         1242    i.SysCtlClockGet    driverlib.lib(sysctl.o)
-    0x00001094   0x00001094   0x00000120   Code   RO         1244    i.SysCtlClockSet    driverlib.lib(sysctl.o)
-    0x000011b4   0x000011b4   0x00000028   Code   RO         1273    i.SysCtlPeripheralEnable  driverlib.lib(sysctl.o)
-    0x000011dc   0x000011dc   0x0000002c   Code   RO         1277    i.SysCtlPeripheralReady  driverlib.lib(sysctl.o)
-    0x00001208   0x00001208   0x0000000e   Code   RO         1588    i.SysTickEnable     driverlib.lib(systick.o)
-    0x00001216   0x00001216   0x0000000a   Code   RO         1594    i.SysTickPeriodSet  driverlib.lib(systick.o)
-    0x00001220   0x00001220   0x0000006e   Code   RO         1664    i.UARTConfigSetExpClk  driverlib.lib(uart.o)
-    0x0000128e   0x0000128e   0x00000002   PAD
-    0x00001290   0x00001290   0x00000010   Code   RO          231    i.UART_OutChar      uart_helper.o
-    0x000012a0   0x000012a0   0x00000068   Code   RO          232    i.UartSetup         uart_helper.o
-    0x00001308   0x00001308   0x00000020   Code   RO         2006    i.__0printf$1       mc_w.l(printf1.o)
-    0x00001328   0x00001328   0x0000000e   Code   RO         2264    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x00001336   0x00001336   0x00000002   Code   RO         2265    i.__scatterload_null  mc_w.l(handlers.o)
-    0x00001338   0x00001338   0x0000000e   Code   RO         2266    i.__scatterload_zeroinit  mc_w.l(handlers.o)
-    0x00001346   0x00001346   0x00000002   PAD
-    0x00001348   0x00001348   0x00000154   Code   RO         2013    i._printf_core      mc_w.l(printf1.o)
-    0x0000149c   0x0000149c   0x00000022   Code   RO          235    i.fputc             uart_helper.o
-    0x000014be   0x000014be   0x00000002   PAD
-    0x000014c0   0x000014c0   0x00000054   Code   RO          314    i.initReceiver      can.o
-    0x00001514   0x00001514   0x00000050   Code   RO            3    i.labFinalReceive   project.o
-    0x00001564   0x00001564   0x00000016   Code   RO            4    i.main              project.o
-    0x0000157a   0x0000157a   0x00000002   PAD
-    0x0000157c   0x0000157c   0x000000a8   Code   RO            5    i.setupHardware     project.o
-    0x00001624   0x00001624   0x00000020   Data   RO          707    .constdata          driverlib.lib(can.o)
-    0x00001644   0x00001644   0x00000228   Data   RO          868    .constdata          driverlib.lib(gpio.o)
-    0x0000186c   0x0000186c   0x0000010c   Data   RO         1143    .constdata          driverlib.lib(interrupt.o)
-    0x00001978   0x00001978   0x00000254   Data   RO         1295    .constdata          driverlib.lib(sysctl.o)
-    0x00001bcc   0x00001bcc   0x00000020   Data   RO         2262    Region$$Table       anon$$obj.o
+    0x00000ac0   0x00000ac0   0x00000084   Code   RO          312    i.CAN_Transmit      can.o
+    0x00000b44   0x00000b44   0x00000020   Code   RO          200    i.ClockSetup        systic.o
+    0x00000b64   0x00000b64   0x00000028   Code   RO          824    i.GPIODirModeSet    driverlib.lib(gpio.o)
+    0x00000b8c   0x00000b8c   0x00000138   Code   RO          836    i.GPIOPadConfigSet  driverlib.lib(gpio.o)
+    0x00000cc4   0x00000cc4   0x00000044   Code   RO          837    i.GPIOPinConfigure  driverlib.lib(gpio.o)
+    0x00000d08   0x00000d08   0x0000001c   Code   RO          839    i.GPIOPinTypeADC    driverlib.lib(gpio.o)
+    0x00000d24   0x00000d24   0x0000001c   Code   RO          840    i.GPIOPinTypeCAN    driverlib.lib(gpio.o)
+    0x00000d40   0x00000d40   0x0000001c   Code   RO          848    i.GPIOPinTypeGPIOOutput  driverlib.lib(gpio.o)
+    0x00000d5c   0x00000d5c   0x0000001c   Code   RO          860    i.GPIOPinTypeUART   driverlib.lib(gpio.o)
+    0x00000d78   0x00000d78   0x00000030   Code   RO          292    i.GPIO_Setup        gpio_init.o
+    0x00000da8   0x00000da8   0x000000d0   Code   RO          313    i.Init_Structs      can.o
+    0x00000e78   0x00000e78   0x00000064   Code   RO         1127    i.IntEnable         driverlib.lib(interrupt.o)
+    0x00000edc   0x00000edc   0x00000034   Code   RO         1139    i.IntRegister       driverlib.lib(interrupt.o)
+    0x00000f10   0x00000f10   0x000000a0   Code   RO          362    i.SetupADC          hal_adc.o
+    0x00000fb0   0x00000fb0   0x0000000c   Code   RO          363    i.SetupADCPins      hal_adc.o
+    0x00000fbc   0x00000fbc   0x00000154   Code   RO         1242    i.SysCtlClockGet    driverlib.lib(sysctl.o)
+    0x00001110   0x00001110   0x00000120   Code   RO         1244    i.SysCtlClockSet    driverlib.lib(sysctl.o)
+    0x00001230   0x00001230   0x00000028   Code   RO         1273    i.SysCtlPeripheralEnable  driverlib.lib(sysctl.o)
+    0x00001258   0x00001258   0x0000002c   Code   RO         1277    i.SysCtlPeripheralReady  driverlib.lib(sysctl.o)
+    0x00001284   0x00001284   0x0000000e   Code   RO         1588    i.SysTickEnable     driverlib.lib(systick.o)
+    0x00001292   0x00001292   0x0000000a   Code   RO         1594    i.SysTickPeriodSet  driverlib.lib(systick.o)
+    0x0000129c   0x0000129c   0x0000006e   Code   RO         1664    i.UARTConfigSetExpClk  driverlib.lib(uart.o)
+    0x0000130a   0x0000130a   0x00000002   PAD
+    0x0000130c   0x0000130c   0x00000014   Code   RO          230    i.UART_InChar       uart_helper.o
+    0x00001320   0x00001320   0x00000010   Code   RO          231    i.UART_OutChar      uart_helper.o
+    0x00001330   0x00001330   0x00000068   Code   RO          232    i.UartSetup         uart_helper.o
+    0x00001398   0x00001398   0x00000020   Code   RO         2006    i.__0printf$1       mc_w.l(printf1.o)
+    0x000013b8   0x000013b8   0x0000000e   Code   RO         2264    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x000013c6   0x000013c6   0x00000002   Code   RO         2265    i.__scatterload_null  mc_w.l(handlers.o)
+    0x000013c8   0x000013c8   0x0000000e   Code   RO         2266    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x000013d6   0x000013d6   0x00000002   PAD
+    0x000013d8   0x000013d8   0x00000154   Code   RO         2013    i._printf_core      mc_w.l(printf1.o)
+    0x0000152c   0x0000152c   0x00000098   Code   RO            1    i.displayData       project.o
+    0x000015c4   0x000015c4   0x00000004   Code   RO          234    i.fgetc             uart_helper.o
+    0x000015c8   0x000015c8   0x00000022   Code   RO          235    i.fputc             uart_helper.o
+    0x000015ea   0x000015ea   0x00000004   Code   RO         1958    i.getc              mc_w.l(getc.o)
+    0x000015ee   0x000015ee   0x00000002   PAD
+    0x000015f0   0x000015f0   0x00000070   Code   RO          314    i.initReceiver      can.o
+    0x00001660   0x00001660   0x00000016   Code   RO            4    i.main              project.o
+    0x00001676   0x00001676   0x00000002   PAD
+    0x00001678   0x00001678   0x000000a8   Code   RO            5    i.setupHardware     project.o
+    0x00001720   0x00001720   0x000000a4   Code   RO            6    i.transmitAndReceive  project.o
+    0x000017c4   0x000017c4   0x00000020   Data   RO          707    .constdata          driverlib.lib(can.o)
+    0x000017e4   0x000017e4   0x00000228   Data   RO          868    .constdata          driverlib.lib(gpio.o)
+    0x00001a0c   0x00001a0c   0x0000010c   Data   RO         1143    .constdata          driverlib.lib(interrupt.o)
+    0x00001b18   0x00001b18   0x00000254   Data   RO         1295    .constdata          driverlib.lib(sysctl.o)
+    0x00001d6c   0x00001d6c   0x0000022d   Data   RO            7    .conststring        project.o
+    0x00001f99   0x00001f99   0x00000003   PAD
+    0x00001f9c   0x00001f9c   0x00000042   Data   RO          316    .conststring        can.o
+    0x00001fde   0x00001fde   0x00000002   PAD
+    0x00001fe0   0x00001fe0   0x00000020   Data   RO         2262    Region$$Table       anon$$obj.o
 
 
-    Execution Region RW_IRAM (Exec base: 0x20000000, Load base: 0x00001bec, Size: 0x000008d8, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x00000014])
+    Execution Region RW_IRAM (Exec base: 0x20000000, Load base: 0x00002000, Size: 0x000008d8, Max: 0x00008000, ABSOLUTE, COMPRESSED[0x00000014])
 
     Exec Addr    Load Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   COMPRESSED   0x00000008   Data   RW          317    .data               can.o
     0x20000008   COMPRESSED   0x00000004   Data   RW          319    .data               can.o
-    0x2000000c   COMPRESSED   0x00000004   Data   RW         2236    .data               mc_w.l(stdout.o)
-    0x20000010   COMPRESSED   0x000003f0   PAD
+    0x2000000c   COMPRESSED   0x00000004   Data   RW         1960    .data               mc_w.l(stdin.o)
+    0x20000010   COMPRESSED   0x00000004   Data   RW         2236    .data               mc_w.l(stdout.o)
+    0x20000014   COMPRESSED   0x000003ec   PAD
     0x20000400   COMPRESSED   0x0000026c   Data   RW         1144    vtable              driverlib.lib(interrupt.o)
     0x2000066c        -       0x0000016c   Zero   RW          315    .bss                can.o
     0x200007d8        -       0x00000100   Zero   RW          193    STACK               startup_rvmdk.o
@@ -1133,18 +1149,18 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       756        216          0         12        364       3255   can.o
-        48         10          0          0          0        509   gpio_init.o
-       172         14          0          0          0       1290   hal_adc.o
-       270        128          0          0          0       9145   project.o
-       648        622          0          0        256        308   startup_rvmdk.o
-        32         10          0          0          0        501   systic.o
-       154         20          0          0          0       2071   uart_helper.o
+       916        266         66         12        364       3678   can.o
+        48         10          0          0          0        477   gpio_init.o
+       172         14          0          0          0       1194   hal_adc.o
+       506        230        557          0          0       9578   project.o
+       648        622          0          0        256        276   startup_rvmdk.o
+        32         10          0          0          0        469   systic.o
+       178         26          0          0          0       2839   uart_helper.o
 
     ----------------------------------------------------------------------
-      2084       1020         32         12        620      17079   Object Totals
+      2502       1178        660         12        620      18511   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-         4          0          0          0          0          0   (incl. Padding)
+         2          0          5          0          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -1152,7 +1168,7 @@ Image component sizes
 
        292          0          0          0          0       6093   adc.o
       1178         26         32          0          0      11458   can.o
-       538          8        552          0          0       6106   gpio.o
+       532          8        552          0          0       5563   gpio.o
        152         16        268        620          0       2202   interrupt.o
        718         62        596          0          0       5147   sysctl.o
         24          0          0          0          0        923   systick.o
@@ -1166,25 +1182,27 @@ Image component sizes
          0          0          0          0          0          0   entry7b.o
          0          0          0          0          0          0   entry8b.o
          8          4          0          0          0          0   entry9a.o
+         4          0          0          0          0         68   getc.o
         30          0          0          0          0          0   handlers.o
         36          8          0          0          0         68   init.o
        372         14          0          0          0        184   printf1.o
+         0          0          0          4          0          0   stdin.o
          0          0          0          4          0          0   stdout.o
         44          0          0          0          0         80   uidiv.o
 
     ----------------------------------------------------------------------
-      3584        142       1448       1632          0      33904   Library Totals
-        12          0          0       1008          0          0   (incl. Padding)
+      3582        142       1448       1632          0      33429   Library Totals
+        12          0          0       1004          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Library Name
 
-      3012        112       1448        620          0      33572   driverlib.lib
-       560         30          0          4          0        332   mc_w.l
+      3006        112       1448        620          0      33029   driverlib.lib
+       564         30          0          8          0        400   mc_w.l
 
     ----------------------------------------------------------------------
-      3584        142       1448       1632          0      33904   Library Totals
+      3582        142       1448       1632          0      33429   Library Totals
 
     ----------------------------------------------------------------------
 
@@ -1193,15 +1211,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-      5668       1162       1480       1644        620      47215   Grand Totals
-      5668       1162       1480         20        620      47215   ELF Image Totals (compressed)
-      5668       1162       1480         20          0          0   ROM Totals
+      6084       1320       2108       1644        620      47920   Grand Totals
+      6084       1320       2108         20        620      47920   ELF Image Totals (compressed)
+      6084       1320       2108         20          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                 7148 (   6.98kB)
+    Total RO  Size (Code + RO Data)                 8192 (   8.00kB)
     Total RW  Size (RW Data + ZI Data)              2264 (   2.21kB)
-    Total ROM Size (Code + RO Data + RW Data)       7168 (   7.00kB)
+    Total ROM Size (Code + RO Data + RW Data)       8212 (   8.02kB)
 
 ==============================================================================
 

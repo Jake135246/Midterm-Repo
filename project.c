@@ -23,8 +23,8 @@ int  main(void) {
 	
 	
 //	labFinal();
-	labFinalReceive();
- 	//transmitAndReceive();
+//	labFinalReceive();
+ 	transmitAndReceive();
 }	
 
 void transmitAndReceive() {
@@ -58,6 +58,7 @@ void transmitAndReceive() {
 }
 void labFinalReceive(){
 	initReceiver();
+	printf("Initialized lab receiver");
 	while(1){
 	if(MsgData[1][0] >= 128)
 			GPIOPinWrite(GPIO_PORTF_BASE, GPIO_PIN_1, 0xF);
@@ -97,7 +98,6 @@ void labFinal(){
 
 void setupHardware(){
 		ClockSetup();
-		
 		GPIO_Setup();
 		UartSetup();
 	  CAN_Init();
